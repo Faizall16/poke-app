@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PokéApp
+
+A modern Pokemon application built with Next.js, TanStack Query, and Tailwind CSS that integrates with the [PokéAPI](https://pokeapi.co/).
+
+## Features
+
+- 🎯 **Pokemon List**: Browse through all Pokemon with infinite scrolling
+- 🔍 **Search Functionality**: Search for specific Pokemon by name
+- 📱 **Responsive Design**: Mobile-first design that works on all devices
+- ⚡ **Fast Performance**: Built with Next.js 15 and optimized for speed
+- 🎨 **Modern UI**: Beautiful interface using Tailwind CSS
+- 🔄 **Real-time Data**: Live data from PokéAPI with TanStack Query caching
+- 📊 **Pokemon Details**: View Pokemon stats, types, and abilities
+
+## Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Query Management**: TanStack Query (React Query)
+- **Styling**: Tailwind CSS
+- **HTTP Client**: Axios
+- **Language**: TypeScript
+- **API**: [PokéAPI](https://pokeapi.co/)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18.18.0 or higher
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone <your-repo-url>
+cd poke-app
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                 # Next.js App Router
+│   ├── layout.tsx      # Root layout with TanStack Query provider
+│   ├── page.tsx        # Main page component
+│   └── providers.tsx   # TanStack Query provider setup
+├── components/         # React components
+│   ├── PokemonCard.tsx # Individual Pokemon card component
+│   ├── PokemonList.tsx # Pokemon list with infinite scroll
+│   └── PokemonSearch.tsx # Search functionality
+├── hooks/             # Custom React hooks
+│   └── usePokemon.ts  # TanStack Query hooks for Pokemon data
+└── services/          # API service layer
+    └── pokeapi.ts     # PokéAPI integration
+```
 
-## Learn More
+## API Integration
 
-To learn more about Next.js, take a look at the following resources:
+The app integrates with the [PokéAPI](https://pokeapi.co/) using the following endpoints:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `GET /api/v2/pokemon` - Get Pokemon list with pagination
+- `GET /api/v2/pokemon/{id}` - Get specific Pokemon details
+- `GET /api/v2/type` - Get Pokemon types
+- `GET /api/v2/ability` - Get Pokemon abilities
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## TanStack Query Features
 
-## Deploy on Vercel
+- **Automatic Caching**: Pokemon data is cached for optimal performance
+- **Background Updates**: Data stays fresh with automatic background refetching
+- **Error Handling**: Graceful error handling with user-friendly messages
+- **Loading States**: Smooth loading experiences with skeleton states
+- **Infinite Queries**: Efficient pagination for large datasets
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Available Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+
+- [PokéAPI](https://pokeapi.co/) for providing the Pokemon data
+- [TanStack](https://tanstack.com/) for the excellent React Query library
+- [Next.js](https://nextjs.org/) team for the amazing framework
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework
