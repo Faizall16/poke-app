@@ -16,7 +16,7 @@ export interface Pokemon {
     other?: {
       dream_world?: { front_default: string | null };
       home?: { front_default: string | null };
-      [key: string]: any; // allow "official-artwork" access safely
+      [key: string]: unknown;
     };
   };
   types: Array<{
@@ -121,20 +121,21 @@ export const pokeApi = {
   // Get Pokemon types
   getTypes: async () => {
     const response = await axios.get(`${BASE_URL}/type`);
-    return response.data;
+    return response.data as unknown;
   },
 
   // Get Pokemon abilities
   getAbilities: async () => {
     const response = await axios.get(`${BASE_URL}/ability`);
-    return response.data;
+    return response.data as unknown;
   },
 
   // Search Pokemon by name
   searchPokemon: async (query: string): Promise<PokemonListResponse> => {
     const response = await axios.get(`${BASE_URL}/pokemon?limit=1000`);
-    const allPokemon = response.data.results;
-    const filteredPokemon = allPokemon.filter((pokemon: any) =>
+    const allPokemon: Array<{ name: string; url: string }> =
+      response.data.results;
+    const filteredPokemon = allPokemon.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(query.toLowerCase())
     );
     return {

@@ -63,7 +63,7 @@ export default function PokemonList() {
       {selectedPokemon && (
         <PokemonDetailModal
           name={selectedPokemon}
-          onClose={() => setSelectedPokemon(null)}
+          onCloseAction={() => setSelectedPokemon(null)}
         />
       )}
     </div>

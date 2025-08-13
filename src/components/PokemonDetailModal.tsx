@@ -9,10 +9,10 @@ import {
 
 export default function PokemonDetailModal({
   name,
-  onClose,
+  onCloseAction,
 }: {
   name: string;
-  onClose: () => void;
+  onCloseAction: () => void;
 }) {
   const { data: pokemon } = usePokemon(name);
   const { data: species } = usePokemonSpecies(name);
@@ -68,7 +68,10 @@ export default function PokemonDetailModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/50" onClick={onClose}></div>
+      <div
+        className="absolute inset-0 bg-black/50"
+        onClick={onCloseAction}
+      ></div>
 
       <div className="relative bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden">
         <div className={`${typeBg[primaryType] ?? "bg-gray-100"} p-6`}>
@@ -199,6 +202,14 @@ export default function PokemonDetailModal({
           )}
         </div>
       </div>
+
+      <button
+        onClick={onCloseAction}
+        className="absolute top-2 right-2 text-gray-600 hover:text-gray-800 text-2xl"
+        aria-label="Close"
+      >
+        ×
+      </button>
     </div>
   );
 }

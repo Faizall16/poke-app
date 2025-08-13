@@ -63,7 +63,7 @@ export default function PokemonSearch() {
           {data && data.results.length > 0 && (
             <div>
               <h3 className="text-lg font-semibold mb-4">
-                Found {data.count} Pokemon matching "{debouncedQuery}"
+                Found {data.count} Pokemon matching &quot;{debouncedQuery}&quot;
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {data.results.map((pokemon) => (
@@ -79,7 +79,7 @@ export default function PokemonSearch() {
 
           {data && data.results.length === 0 && debouncedQuery && (
             <div className="text-center text-gray-600 p-8">
-              <p>No Pokemon found matching "{debouncedQuery}"</p>
+              <p>No Pokemon found matching &quot;{debouncedQuery}&quot;</p>
             </div>
           )}
         </div>
@@ -88,7 +88,7 @@ export default function PokemonSearch() {
       {selectedPokemon && (
         <PokemonDetailModal
           name={selectedPokemon}
-          onClose={() => setSelectedPokemon(null)}
+          onCloseAction={() => setSelectedPokemon(null)}
         />
       )}
     </div>
